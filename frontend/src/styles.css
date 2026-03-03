@@ -1,0 +1,139 @@
+:root {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #f5efe6;
+  background:
+    radial-gradient(circle at top, rgba(242, 169, 0, 0.18), transparent 36%),
+    linear-gradient(135deg, #141414 0%, #1f2a44 55%, #0d1117 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  width: min(1080px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.hero {
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  backdrop-filter: blur(12px);
+  background: rgba(9, 14, 24, 0.6);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.24);
+}
+
+.hero__eyebrow {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #f2a900;
+  font-size: 0.8rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+  line-height: 1.05;
+}
+
+.hero__copy {
+  max-width: 56ch;
+  margin: 1rem 0 0;
+  color: rgba(245, 239, 230, 0.84);
+  line-height: 1.6;
+}
+
+.hero__button {
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f2a900, #ff7a18);
+  color: #101010;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.status-card {
+  padding: 1.5rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.status-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.status-card h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.status-card p {
+  margin: 1rem 0 0;
+  color: rgba(245, 239, 230, 0.82);
+  line-height: 1.6;
+}
+
+.status-card__badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.status-card__badge--ok {
+  background: rgba(50, 205, 50, 0.18);
+  color: #9ff59f;
+}
+
+.status-card__badge--loading {
+  background: rgba(242, 169, 0, 0.2);
+  color: #ffd37a;
+}
+
+.status-card__badge--error {
+  background: rgba(255, 99, 71, 0.2);
+  color: #ffb2a3;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 2rem 0;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+}

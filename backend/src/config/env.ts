@@ -1,0 +1,38 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
+type AppConfig = {
+  port: number;
+  mongodbUri: string;
+  dbName: string;
+  corsOrigin: string;
+};
+
+function requireEnv(name: string): string {
+  const value = process.env[name];
+
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+
+  return value;
+}
+
+function parsePort(value: string): number {
+  const port = Number.parseInt(value, 10);
+
+  if (Number.isNaN(port) || port <= 0) {
+    throw new Error(`Invalid PORT value: ${value}`);
+  }
+
+  return port;
+}
+
+export const config: AppConfig = {
+  port: parsePort(requireEnv("PORT")),
+  mongodbUri: requireEnv("MONGODB_URI"),
+  dbName: requireEnv("DB_NAME"),
+  corsOrigin: requireEnv("CORS_ORIGIN")
+};
+

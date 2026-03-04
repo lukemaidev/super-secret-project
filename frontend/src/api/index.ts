@@ -1,1 +1,1 @@
-export { fetchJson } from "./client";
+export { apiClient } from "./client";

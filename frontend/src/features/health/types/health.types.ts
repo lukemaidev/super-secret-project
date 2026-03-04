@@ -8,9 +8,3 @@ export type DbHealthResponse = {
   database?: string;
   message?: string;
 };
-
-export type StatusState = {
-  loading: boolean;
-  ok: boolean;
-  detail: string;
-};

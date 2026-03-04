@@ -1,10 +1,14 @@
 # Super Secret Project
 
-Minimal full-stack starter with:
+Full-stack starter built with React, Express, and MongoDB. Uses a feature-based architecture on both frontend and backend with TypeScript throughout.
 
-- `frontend/`: React + TypeScript + Vite
-- `backend/`: Express + TypeScript + MongoDB driver
-- `docker/`: MongoDB Docker Compose setup
+## Tech Stack
+
+| Layer    | Technology                          |
+| -------- | ----------------------------------- |
+| Frontend | React 18, Vite, TypeScript          |
+| Backend  | Express, MongoDB driver, Pino, TypeScript |
+| Database | MongoDB 7 (Docker)                  |
 
 ## Prerequisites
 
@@ -12,83 +16,55 @@ Minimal full-stack starter with:
 - npm
 - Docker Desktop
 
-## Project Structure
+## Quick Start
 
-```text
-.
-|-- backend
-|-- docker
-|-- frontend
-`-- README.md
-```
+### 1. Start MongoDB
 
-## 1. Start MongoDB
-
-From the `docker/` directory:
-
-```powershell
-docker compose up
+```sh
+cd docker
+docker compose up -d
 ```
 
 MongoDB will be available at `mongodb://localhost:27017`.
 
-## 2. Start the Backend
+### 2. Start the Backend
 
-From the `backend/` directory:
-
-```powershell
+```sh
+cd backend
 npm install
 npm run dev
 ```
 
-The API will run at `http://localhost:5000`.
+API runs at `http://localhost:5000`. See [backend/README.md](backend/README.md) for details.
 
-### Health endpoints
+### 3. Start the Frontend
 
-- `GET http://localhost:5000/api/health`
-- `GET http://localhost:5000/api/health/db`
-
-## 3. Start the Frontend
-
-From the `frontend/` directory:
-
-```powershell
+```sh
+cd frontend
 npm install
 npm run dev
 ```
 
-The app will run at `http://localhost:5173`.
+App runs at `http://localhost:5173`. See [frontend/README.md](frontend/README.md) for details.
 
-## Environment Files
+## Project Structure
 
-### `docker/.env`
-
-```env
-MONGO_INITDB_ROOT_USERNAME=admin
-MONGO_INITDB_ROOT_PASSWORD=password
-MONGO_PORT=27017
+```text
+.
+├── backend/          # Express API server
+├── docker/           # MongoDB compose setup
+├── frontend/         # React SPA
+└── README.md
 ```
 
-### `backend/.env`
+## Environment Configuration
 
-```env
-PORT=5000
-MONGODB_URI=mongodb://admin:password@localhost:27017/appdb?authSource=admin
-DB_NAME=appdb
-CORS_ORIGIN=http://localhost:5173
-```
+Each layer has its own environment files:
 
-### `frontend/.env`
+| Location               | Variables                                        |
+| ---------------------- | ------------------------------------------------ |
+| `docker/.env`          | `MONGO_INITDB_ROOT_USERNAME`, `MONGO_INITDB_ROOT_PASSWORD`, `MONGO_PORT` |
+| `backend/.env.*`       | `PORT`, `MONGODB_URI`, `DB_NAME`, `CORS_ORIGIN`  |
+| `frontend/.env`        | `VITE_API_BASE_URL`                              |
 
-```env
-VITE_API_BASE_URL=http://localhost:5000/api
-```
-
-## Expected Result
-
-When everything is running:
-
-- the frontend loads at `http://localhost:5173`
-- the frontend shows backend health status
-- the frontend shows MongoDB status
-- the backend serves JSON responses from both health endpoints
+See the backend and frontend READMEs for full details.

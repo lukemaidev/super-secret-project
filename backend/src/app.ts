@@ -2,11 +2,13 @@ import cors from "cors";
 import express from "express";
 
 import { config } from "./config/env";
-import { healthRouter } from "./routes/health";
+import { healthRouter } from "./features/health";
+import { requestLogger } from "./middlewares";
 
 export function createApp() {
   const app = express();
 
+  app.use(requestLogger);
   app.use(
     cors({
       origin: config.corsOrigin

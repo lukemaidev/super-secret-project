@@ -1,6 +1,7 @@
 import { Db, MongoClient } from "mongodb";
 
 import { config } from "./env";
+import { logger } from "../utils/logger";
 
 let client: MongoClient | null = null;
 let database: Db | null = null;
@@ -15,6 +16,7 @@ export async function connectToDatabase(): Promise<Db> {
 
   database = client.db(config.dbName);
   await database.command({ ping: 1 });
+  logger.info("Connected to MongoDB");
 
   return database;
 }

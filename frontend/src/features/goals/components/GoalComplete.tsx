@@ -1,7 +1,7 @@
-import { Button } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
+import { Plus } from "lucide-react";
 import { useNavigate } from "react-router";
 
+import { Button } from "@/components/ui/button";
 import type { Goal } from "../types/goals.types";
 
 interface GoalCompleteProps {
@@ -64,9 +64,9 @@ export function GoalComplete({ goal }: GoalCompleteProps) {
 
         <div className="mt-10 flex justify-center">
           <Button
-            type="default"
-            size="large"
-            icon={<PlusOutlined />}
+            variant="outline"
+            size="lg"
+            icon={<Plus />}
             onClick={() => navigate("/goals/new")}
             className="!h-12 !px-8 !text-base !rounded-xl"
           >

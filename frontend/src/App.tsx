@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router";
-import { Button } from "antd";
-import { SunOutlined, MoonOutlined } from "@ant-design/icons";
+import { Sun, Moon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "@/features/theme";
 import { AuthPage } from "@/features/auth";
 import { GoalWizard, InitialGoalStep } from "@/features/goals";
@@ -14,11 +14,13 @@ export default function App() {
     <>
       <div className="fixed top-4 right-4 z-50">
         <Button
-          type="text"
-          icon={mode === "dark" ? <SunOutlined /> : <MoonOutlined />}
+          variant="ghost"
+          size="icon"
           onClick={toggleTheme}
           aria-label={`Switch to ${mode === "dark" ? "light" : "dark"} mode`}
-        />
+        >
+          {mode === "dark" ? <Sun /> : <Moon />}
+        </Button>
       </div>
       <Routes>
         <Route path="/auth" element={<AuthPage />} />

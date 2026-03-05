@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Button, Spin } from "antd";
-import { ArrowRightOutlined, LoadingOutlined } from "@ant-design/icons";
+import { ArrowRight } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 import { useCurrentQuestion } from "../../hooks/useCurrentQuestion";
 import { useSubmitAnswer } from "../../hooks/useSubmitAnswer";
 import type { Goal, CurrentQuestion } from "../../types/goals.types";
@@ -47,7 +48,7 @@ export function ClarifyingStep({ goal }: ClarifyingStepProps) {
   if (questionQuery.isLoading) {
     return (
       <div className="flex justify-center items-center py-24">
-        <Spin indicator={<LoadingOutlined className="text-accent !text-2xl" />} />
+        <Spinner className="text-accent !text-2xl" />
       </div>
     );
   }
@@ -120,10 +121,9 @@ export function ClarifyingStep({ goal }: ClarifyingStepProps) {
 
         <div className="mt-8 flex justify-center">
           <Button
-            type="primary"
-            htmlType="submit"
-            size="large"
-            icon={<ArrowRightOutlined />}
+            type="submit"
+            size="lg"
+            icon={<ArrowRight />}
             iconPosition="end"
             loading={submitAnswer.isPending}
             disabled={!answer.trim()}

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "antd";
-import { CheckCircleOutlined, EditOutlined } from "@ant-design/icons";
+import { CheckCircle, Pencil } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { useApproveGoal } from "../../hooks/useApproveGoal";
 import type { Goal } from "../../types/goals.types";
 
@@ -76,7 +76,7 @@ export function GeneratedStep({ goal }: GeneratedStepProps) {
               }}
               className="flex items-center gap-1.5 text-sm text-foreground-muted/70 hover:text-accent transition-colors duration-200 cursor-pointer border-none bg-transparent"
             >
-              <EditOutlined className="text-xs" />
+              <Pencil className="size-3" />
               {isEditing ? "Cancel editing" : "Edit statement"}
             </button>
           </div>
@@ -85,9 +85,8 @@ export function GeneratedStep({ goal }: GeneratedStepProps) {
         {/* Approve */}
         <div className="mt-10 flex justify-center">
           <Button
-            type="primary"
-            size="large"
-            icon={<CheckCircleOutlined />}
+            size="lg"
+            icon={<CheckCircle />}
             loading={approveGoal.isPending}
             onClick={handleApprove}
             disabled={isEditing && !statement.trim()}

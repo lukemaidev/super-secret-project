@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Button } from "antd";
-import { ArrowRightOutlined } from "@ant-design/icons";
+import { ArrowRight } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
 import { useCreateGoal } from "../../hooks/useCreateGoal";
 
 export function InitialGoalStep() {
@@ -51,10 +51,9 @@ export function InitialGoalStep() {
 
         <div className="mt-8 flex justify-center">
           <Button
-            type="primary"
-            htmlType="submit"
-            size="large"
-            icon={<ArrowRightOutlined />}
+            type="submit"
+            size="lg"
+            icon={<ArrowRight />}
             iconPosition="end"
             loading={createGoal.isPending}
             disabled={!text.trim()}

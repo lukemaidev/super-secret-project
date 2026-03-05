@@ -1,15 +1,15 @@
-import { Button, App as AntApp } from "antd";
-import { ReloadOutlined } from "@ant-design/icons";
-import { StatusCard } from "@/components";
+import { RefreshCw } from "lucide-react";
+import { toast } from "sonner";
+import { Button } from "@/components/ui/button";
+import { StatusCard } from "./StatusCard";
 import { useHealthCheck } from "../hooks/useHealthCheck";
 
 export function HealthDashboard() {
   const { appQuery, dbQuery, refresh } = useHealthCheck();
-  const { message } = AntApp.useApp();
 
   function handleRefresh() {
     refresh();
-    void message.info("Refreshing health status...");
+    toast.info("Refreshing health status...");
   }
 
   return (
@@ -23,9 +23,8 @@ export function HealthDashboard() {
           This starter verifies that the frontend can reach the backend and the backend can reach MongoDB.
         </p>
         <Button
-          type="primary"
-          size="large"
-          icon={<ReloadOutlined />}
+          size="lg"
+          icon={<RefreshCw />}
           className="mt-6"
           onClick={handleRefresh}
         >

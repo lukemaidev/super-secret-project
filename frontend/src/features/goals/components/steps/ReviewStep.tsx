@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Button, Input } from "antd";
-import { EditOutlined, CheckOutlined, ThunderboltOutlined } from "@ant-design/icons";
+import { Pencil, Check, Zap } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { useEditAnswer } from "../../hooks/useEditAnswer";
 import { useGenerateStatement } from "../../hooks/useGenerateStatement";
 import type { Goal } from "../../types/goals.types";
@@ -85,7 +86,7 @@ export function ReviewStep({ goal }: ReviewStepProps) {
                   onClick={() => startEdit(item.questionId, item.answer)}
                   className="shrink-0 mt-1 w-8 h-8 flex items-center justify-center rounded-lg text-foreground-muted/60 hover:text-accent hover:bg-accent/10 transition-all duration-200 cursor-pointer border-none bg-transparent"
                 >
-                  <EditOutlined className="text-sm" />
+                  <Pencil className="size-3.5" />
                 </button>
               )}
             </div>
@@ -93,22 +94,19 @@ export function ReviewStep({ goal }: ReviewStepProps) {
             <div className="px-5 pb-4 pt-2">
               {editingId === item.questionId ? (
                 <div className="flex flex-col gap-3">
-                  <Input.TextArea
+                  <Textarea
                     value={editText}
                     onChange={(e) => setEditText(e.target.value)}
-                    autoSize={{ minRows: 2, maxRows: 5 }}
                     autoFocus
-                    className="!bg-transparent !border-accent/30 focus:!border-accent !text-sm"
-                    styles={{ textarea: { background: "transparent" } }}
+                    className="!bg-transparent !border-accent/30 focus:!border-accent !text-sm min-h-[4rem]"
                   />
                   <div className="flex gap-2 justify-end">
-                    <Button size="small" onClick={cancelEdit}>
+                    <Button variant="outline" size="sm" onClick={cancelEdit}>
                       Cancel
                     </Button>
                     <Button
-                      size="small"
-                      type="primary"
-                      icon={<CheckOutlined />}
+                      size="sm"
+                      icon={<Check />}
                       loading={editAnswer.isPending}
                       onClick={() => saveEdit(item.questionId)}
                     >
@@ -129,9 +127,8 @@ export function ReviewStep({ goal }: ReviewStepProps) {
       {/* Generate button */}
       <div className="flex justify-center">
         <Button
-          type="primary"
-          size="large"
-          icon={<ThunderboltOutlined />}
+          size="lg"
+          icon={<Zap />}
           loading={generateStatement.isPending}
           onClick={() => generateStatement.mutate()}
           className="!h-13 !px-10 !text-base !font-semibold !tracking-wide !rounded-xl"

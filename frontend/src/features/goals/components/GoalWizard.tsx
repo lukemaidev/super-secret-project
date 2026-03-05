@@ -1,7 +1,6 @@
 import { useParams } from "react-router";
-import { Spin } from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 
+import { Spinner } from "@/components/ui/spinner";
 import { useGoal } from "../hooks/useGoal";
 import { ClarifyingStep } from "./steps/ClarifyingStep";
 import { ReviewStep } from "./steps/ReviewStep";
@@ -25,9 +24,7 @@ export function GoalWizard() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center py-32">
-        <Spin
-          indicator={<LoadingOutlined className="text-accent text-3xl" />}
-        />
+        <Spinner className="text-accent text-3xl" />
       </div>
     );
   }

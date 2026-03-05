@@ -12,6 +12,10 @@ type AppConfig = {
   mongodbUri: string;
   dbName: string;
   corsOrigin: string;
+  jwtSecret: string;
+  awsRegion: string | undefined;
+  awsAccessKeyId: string | undefined;
+  awsSecretAccessKey: string | undefined;
 };
 
 function requireEnv(name: string): string {
@@ -38,6 +42,10 @@ export const config: AppConfig = {
   port: parsePort(requireEnv("PORT")),
   mongodbUri: requireEnv("MONGODB_URI"),
   dbName: requireEnv("DB_NAME"),
-  corsOrigin: requireEnv("CORS_ORIGIN")
+  corsOrigin: requireEnv("CORS_ORIGIN"),
+  jwtSecret: requireEnv("JWT_SECRET"),
+  awsRegion: process.env.AWS_REGION,
+  awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 };
 

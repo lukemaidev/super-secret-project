@@ -1,10 +1,14 @@
 import { createApp } from "./app";
 import { closeDatabaseConnection, connectToDatabase } from "./config/db";
 import { config } from "./config/env";
+import { ensureAuthIndexes } from "./features/auth";
+import { ensureGoalsIndexes } from "./features/goals";
 import { logger } from "./utils/logger";
 
 async function startServer() {
   await connectToDatabase();
+  await ensureAuthIndexes();
+  await ensureGoalsIndexes();
 
   const app = createApp();
   const server = app.listen(config.port, () => {

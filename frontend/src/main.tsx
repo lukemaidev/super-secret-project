@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ConfigProvider, theme, App as AntApp } from "antd";
+import { App as AntApp } from "antd";
 
+import { ThemeProvider } from "@/features/theme";
 import App from "./App";
 import "./styles/global.css";
 
@@ -18,15 +19,7 @@ const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ConfigProvider
-      theme={{
-        algorithm: theme.darkAlgorithm,
-        token: {
-          colorPrimary: "#f2a900",
-          borderRadius: 8,
-        },
-      }}
-    >
+    <ThemeProvider>
       <AntApp>
         <QueryClientProvider client={queryClient}>
           <BrowserRouter>
@@ -34,6 +27,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           </BrowserRouter>
         </QueryClientProvider>
       </AntApp>
-    </ConfigProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );

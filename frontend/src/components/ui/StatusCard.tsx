@@ -11,7 +11,7 @@ type StatusCardProps = {
 export function StatusCard({ title, loading, ok, detail }: StatusCardProps) {
   return (
     <Card
-      className="bg-white/8 border-white/10"
+      className="bg-surface border-border"
       styles={{ body: { padding: "1.5rem" } }}
     >
       <div className="flex items-center justify-between gap-4">
@@ -30,7 +30,7 @@ export function StatusCard({ title, loading, ok, detail }: StatusCardProps) {
           </Tag>
         )}
       </div>
-      <p className="mt-4 mb-0 text-[rgba(245,239,230,0.82)] leading-relaxed">{detail}</p>
+      <p className="mt-4 mb-0 text-foreground-muted leading-relaxed">{detail}</p>
     </Card>
   );
 }

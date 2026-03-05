@@ -1,11 +1,40 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-ivory: #E4E4DE;
+  --color-sage: #C4C5BA;
+  --color-black: #1B1B1B;
+  --color-moss: #595F39;
+
+  --color-background: #E4E4DE;
+  --color-surface: rgba(255, 255, 255, 0.08);
+  --color-foreground: #1B1B1B;
+  --color-foreground-muted: rgba(27, 27, 27, 0.72);
+  --color-accent: #595F39;
+  --color-accent-highlight: #B8860B;
+  --color-border: rgba(27, 27, 27, 0.12);
+  --color-surface-glass: rgba(255, 255, 255, 0.06);
+  --color-shadow: rgba(0, 0, 0, 0.12);
+}
+
+.dark {
+  --color-background: #1B1B1B;
+  --color-surface: rgba(255, 255, 255, 0.08);
+  --color-foreground: #E4E4DE;
+  --color-foreground-muted: rgba(228, 228, 222, 0.82);
+  --color-accent: #7A8250;
+  --color-accent-highlight: #F2A900;
+  --color-border: rgba(255, 255, 255, 0.12);
+  --color-surface-glass: rgba(9, 14, 24, 0.6);
+  --color-shadow: rgba(0, 0, 0, 0.24);
+}
+
 :root {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #f5efe6;
-  background:
-    radial-gradient(circle at top, rgba(242, 169, 0, 0.18), transparent 36%),
-    linear-gradient(135deg, #141414 0%, #1f2a44 55%, #0d1117 100%);
+  color: var(--color-foreground);
+  background: var(--color-background);
 }
 
 * {
